@@ -18,7 +18,7 @@ app.use('/users',require('./routes/users'));
 
 // /routes
 app.get('/', (req, res) => {
-  res.send("welcome op de homepage: Work in progres")
+  res.send("welcome op de homepage: Work in progress")
 
   
 });

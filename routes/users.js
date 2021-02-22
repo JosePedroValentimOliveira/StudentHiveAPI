@@ -8,12 +8,15 @@ router.get('/',async(req,res)=>{
 })
 router.post('/login',async(req,res)=>{
     const {email,password}= req.body;
-    
+    console.log(req.body);
     const user = await User.findOne({email:email}).exec();
-    
+    console.log(user);
     bcrypt.compare(password,user.password,(err,isMatch)=>{
+        console.log('bcrypt compare');
+        console.log(isMatch);
         if(err)res.send(null);
         if(isMatch){
+            console.log(user._id);
             return res.json(user._id)
         }
         else{
@@ -48,9 +51,11 @@ router.post('/register',async(req,res)=>{
 });
 
 router.get('/user/:userId',async(req,res)=>{
+    console.log('/user/:userId');
     const {userId} = req.params;
+    console.log(userId);
     const user = await User.findById({_id:userId}).exec()
-    console.log(user);
+    
     res.send(user);
 })
 module.exports = router;
