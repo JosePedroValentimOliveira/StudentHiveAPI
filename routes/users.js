@@ -55,7 +55,7 @@ router.get('/user/:userId',async(req,res)=>{
     console.log(userId);
     const user = await User.findById({_id:userId}).exec()
     console.log(user);
-    res.send(user);
+    res.json(user);
 })
 
 router.get('/allUsers/:userId',async(req,res)=>{

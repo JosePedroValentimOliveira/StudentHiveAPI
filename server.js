@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const User = require('./models/UserModel');
 
 //db start
 require('./config/db')
@@ -22,6 +23,10 @@ app.get('/', (req, res) => {
 
   
 });
+app.get('/users',(req,res)=>{
+  const users = User.find();
+  res.json(users);
+})
 
 
 
