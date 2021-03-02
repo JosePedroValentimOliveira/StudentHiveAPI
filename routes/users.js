@@ -12,8 +12,7 @@ router.post('/login',async(req,res)=>{
     const user = await User.findOne({email:email}).exec();
     console.log(user);
     bcrypt.compare(password,user.password,(err,isMatch)=>{
-        console.log('bcrypt compare');
-        console.log(isMatch);
+    
         if(err)res.send(null);
         if(isMatch){
             console.log(user._id);
@@ -55,7 +54,14 @@ router.get('/user/:userId',async(req,res)=>{
     const {userId} = req.params;
     console.log(userId);
     const user = await User.findById({_id:userId}).exec()
-    
+    console.log(user);
     res.send(user);
+})
+
+router.get('/allUsers/:userId',async(req,res)=>{
+    const {userId} = req.params;
+
+    const users = await User.find({ _id: { $nin: userId } })
+    res.json(users);
 })
 module.exports = router;
