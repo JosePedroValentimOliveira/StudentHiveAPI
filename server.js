@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
   
 });
-app.get('/users',(req,res)=>{
+app.get('/user',(req,res)=>{
   const users = User.find();
   res.json(users);
 })
