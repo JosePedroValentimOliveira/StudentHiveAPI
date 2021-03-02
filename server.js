@@ -23,9 +23,8 @@ app.get('/', (req, res) => {
 
   
 });
-app.get('/user',(req,res)=>{
-  const users = User.find();
-  res.json(users);
+app.get('/user',async(req,res)=>{
+  res.json(await User.find());
 })
 
 
